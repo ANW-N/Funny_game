@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" href="game2.0.css">
+</head>
+<body>
+    <header class="navbar">
+        <nav>
+            <button type="button" id="settoggle"><p>⚙</p></button>
+            <h1>Pranker</h1>
+            <button type="button" id="abouttoggle"><p>ℹ</p></button>
+        </nav>
+    </header>
+
+    <section class="settings" id="settings">
+        <h3>settings</h3><button class="hider" id="hideset">❌</button>
+        <div class="prmode">
+            <input type="checkbox" name="prank" id="prankset" checked>
+            <label for="prankset">Prank mode</label>
+        </div>
+        <div class="themetoggle">
+            <button id="togthe">Mavzuni almashtirish</button>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h1 id="about">Ma'lumot</h1></h3><button class="hider" id="hideabo">❌</button>
+
+        <h3 id="about_text">haqida</h3>
+    </section>
+
+    <section class="card" id="start">
+        <input type="number" min="1" id="snum" placeholder="Boshlanadi..."><input type="number" min="10" id="enum" placeholder="Tugaydi...">
+        <button type="button" id="start-game">Boshlash</button>
+    </section>
+
+    <section class="card" id="game">
+        <h3 id="result">Inputga tahminingizni yozing.</h3>
+        <input type="number" id="usernum">
+        <button type="button" id="subber">Tekshirish</button>
+    </section>
+
+    <section class="card" id="win">
+        <h1>G'alaba!</h1>
+        <video src="videos/VID_20260810_231538_437.mp4" autoplay muted loop></video>
+        <h3 id="res"></h3>
+        <button type="button" id="restart">RESTART</button>
+    </section>
+    <footer>Powered by <span>Nazarbek</span> (Senior dasturchi)</footer>
+    <script src="game2.0.js"></script>
+</body>
+</html>
