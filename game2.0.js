@@ -29,11 +29,11 @@ const resultdisp = document.getElementById('redult')
 const restart = document.getElementById('restart')
 const resultate = document.getElementById('res')
 
-const terrorwin = new Audio('audios/4_5982449789000747791.ogg')
+const terrorwin = new Audio('4_5982449789000747791.ogg')
 let my_num = 0
 
 const prankmode = document.getElementById('prankset')
-const startsound = new Audio('audios/4_5984615874152106750.ogg')
+const startsound = new Audio('4_5984615874152106750.ogg')
 
 bodyToggle.addEventListener('click', function() {
     body.classList.toggle('dark')
@@ -48,7 +48,7 @@ hideSet.addEventListener('click', hideset)
 abouttoggle.addEventListener('click', hideabo)
 hideAbo.addEventListener('click', hideabo)
 
-const faa = new Audio('audios/audio_2026-08-10_12-01-38.wav')
+const faa = new Audio('audio_2026-08-10_12-01-38.wav')
 
 let myNum = 0
 let urinish = 0
