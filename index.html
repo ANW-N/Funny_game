@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game</title>
-    <link rel="stylesheet" href="game2.0.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="navbar">
         <nav>
             <button type="button" id="settoggle"><p>⚙</p></button>
-            <h1>Pranker</h1>
+            <h1 id="brand">Pranker</h1>
             <button type="button" id="abouttoggle"><p>ℹ</p></button>
         </nav>
     </header>
@@ -21,6 +21,11 @@
             <input type="checkbox" name="prank" id="prankset" checked>
             <label for="prankset">Prank mode</label>
         </div>
+
+        <div class="container">
+            <button id="music">🎵</button>
+        </div>
+
         <div class="themetoggle">
             <button id="togthe">Mavzuni almashtirish</button>
         </div>
@@ -29,7 +34,11 @@
     <section class="about" id="about">
         <h1 id="about">Ma'lumot</h1></h3><button class="hider" id="hideabo">❌</button>
 
-        <h3 id="about_text">haqida</h3>
+        <h3 id="about_text">
+            Ushbu o'yinda siz, boshlang'ich va tugash oralig'ini kiritasiz keyin men shu oraliqda son o'ylayman siz shuni topishingiz kerak bo'ladi.
+            <br><br>
+            O'yinni boshlash uchun boshlanish va tugash sonlarni kiritib boshlash tugmasini bosing.
+        </h3>
     </section>
 
     <section class="card" id="start">
@@ -38,6 +47,9 @@
     </section>
 
     <section class="card" id="game">
+        <div class="foiz1">
+            <div class="foiz2" id="vfoiz2" style="width: 100%;">qoldi:<span id="qoldi"></span></div>
+        </div>
         <h3 id="result">Inputga tahminingizni yozing.</h3>
         <input type="number" id="usernum">
         <button type="button" id="subber">Tekshirish</button>
@@ -45,11 +57,18 @@
 
     <section class="card" id="win">
         <h1>G'alaba!</h1>
-        <video src="VID_20260810_231538_437.mp4" autoplay muted loop></video>
+        <video src="videos/VID_20260810_231538_437.mp4" autoplay muted loop></video>
         <h3 id="res"></h3>
         <button type="button" id="restart">RESTART</button>
     </section>
+
+    <section class="card" id="lose">
+        <h1>Mag'lub!</h1>
+        <video src="videos/game_over.mp4" autoplay muted loop></video>
+        <h3 id="res2"></h3>
+        <button type="button" id="restart2">RESTART</button>
+    </section>
     <footer>Powered by <span>Nazarbek</span> (Senior dasturchi)</footer>
-    <script src="game2.0.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
