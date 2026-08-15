@@ -55,6 +55,17 @@ bodyToggle.addEventListener('click', () => {
     document.documentElement.dataset.theme = themes[currentTheme]
     localStorage.setItem('theme', currentTheme)
 })
+var checked111 = localStorage.getItem('prankmode')
+
+if (checked111 === 'true') {
+    prankmode.checked = true
+} else {prankmode.checked = false}
+
+console.log(`oldim ${checked111}`)
+
+prankmode.addEventListener('change', () => {
+    localStorage.setItem('prankmode', `${prankmode.checked}`)
+})
 
 const music = document.getElementById('music')
 let chalinmoqda = false
