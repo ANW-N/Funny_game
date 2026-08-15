@@ -80,6 +80,7 @@ nav {
     display: flex;
     flex-direction: row;
     gap: 1rem;
+    z-index: 10;
     transition: all 0.5s;
 }
 
@@ -116,6 +117,7 @@ nav button:hover {
     flex-direction: column;
     border-radius: 3rem;
     padding: 3rem;
+    overflow-y: auto;
 }
 
 .card:hover {
@@ -290,6 +292,10 @@ footer span {
 video {
     transition: all 0.5s;
     max-height: 70%;
+}
+
+.video {
+    height: max-content;
 }
 
 #restart, #restart2 {
