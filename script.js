@@ -123,11 +123,11 @@ startbtn.addEventListener('click', function() {
         startsound.play()
     }
 
-    if (10000>=on && on>1000) {urinishBerildi=30}
-    else if (1000>=on && on>100) {urinishBerildi=20}
-    else if (100>=on && on>50) {urinishBerildi=10}
-    else if (50>=on && on>=10) {urinishBerildi=5}
-    else {urinishBerildi=40}
+    if (1000>=on && on>500) {urinishBerildi=9}
+    else if (500>=on && on>100) {urinishBerildi=8}
+    else if (100>=on && on>20) {urinishBerildi=7}
+    else if (20>=on && on>=10) {urinishBerildi=6}
+    else {urinishBerildi=10}
 
     urinishQoldi=urinishBerildi
     qolgan.innerText = urinishQoldi
