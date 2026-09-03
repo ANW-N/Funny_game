@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Game</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+<body>
+    <div id="header-trigger"></div>
+    <header class="navbar">
+        <nav>
+            <button type="button" id="settoggle">
+                <i class="fa-solid fa-gear fa-spin"></i>
+            </button>
+            <h1 id="brand">Pranker</h1>
+            <button type="button" id="abouttoggle">
+                <i class="fa-solid fa-circle-info"></i>
+            </button>
+        </nav>
+    </header>
+
+    <section class="settings" id="settings">
+        <div class="themetoggle">
+            <button id="togthe">
+                <i class="fa-solid fa-sun fa-spin"></i>
+            </button>
+        </div>
+        <h3>settings</h3>
+        <button class="hider" id="hideset">
+            <i class="fa-solid fa-circle-xmark" style="color: rgb(255, 0, 0);"></i>
+        </button>
+        <div class="prmode">
+            <label>
+                <input type="checkbox" name="prank" id="prankset" checked>
+                <span id="bell">
+                    <i class="fa-solid fa-bell fa-swing"></i>
+                </span>
+            </label>
+        </div>
+
+        <div class="difficulty-box">
+
+            <div class="difficulty-header">
+                <span>Qiyinlik darajasi</span>
+                <strong id="difficultyText">Normal</strong>
+            </div>
+
+            <input
+                type="range"
+                id="difficulty"
+                min="1"
+                max="3"
+                step="1"
+                value="2"
+            >
+
+            <div class="difficulty-labels">
+                <span>Oson</span>
+                <span>Normal</span>
+                <span>Qiyin</span>
+            </div>
+
+            <div class="difficulty-info">
+                <a href="http://t.me/snu2011/">
+                    <i class="fa-brands fa-telegram fa-flip-360"></i>
+                </a>
+                <a href="https://github.com/ANW-N">
+                    <i class="fa-brands fa-github fa-flip-360"></i>
+                </a>
+                <a href="https://robocontest.uz/profile/tayfun_qiruvchi_1">
+                    <img src="images/rc.png" alt="robocontest">
+                </a>
+                <a href="https://www.instagram.com/nsapaniyazov/">
+                    <i class="fa-brands fa-square-instagram fa-flip-360"></i>
+                </a>
+                
+            </div>
+
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="update-banner about-banner">
+
+            <h1 id="about">Ma'lumot</h1>
+
+            <button class="hider" id="hideabo">
+                <i class="fa-solid fa-circle-xmark" style="color: rgb(255, 0, 0);"></i>
+            </button>
+
+            <h3 id="about_text">
+
+                🎯 <strong>O'yin qanday ishlaydi?</strong>
+                <br><br>
+
+                Siz avval o'yin uchun <strong>boshlanish</strong> va
+                <strong>tugash</strong> sonlarini kiritasiz.
+                Masalan: <strong>1 → 100</strong>.
+                <br><br>
+
+                Men shu oraliqdagi <strong>bitta yashirin sonni</strong> o'ylayman.
+                Sizning vazifangiz esa — uni imkon qadar kam urinishda topish! 🧠
+                <br><br>
+
+                💡 <strong>Qanday boshlanadi?</strong>
+                <br><br>
+
+                1️⃣ Boshlanish sonini kiriting.
+                <br>
+                2️⃣ Tugash sonini kiriting.
+                <br>
+                3️⃣ <strong>"Boshlash"</strong> tugmasini bosing.
+                <br>
+                4️⃣ O'z taxminingizni yozing va <strong>Topish</strong> tugmasini bosing.
+                <br><br>
+
+                🔎 Har bir taxminingizdan keyin men sizga yordam beraman:
+                <br>
+                — Men o'ylagan son <strong>kattaroq</strong> bo'lsa — aytaman.
+                <br>
+                — <strong>kichikroq</strong> bo'lsa — yana aytaman.
+                <br>
+                — To'g'ri topsangiz — <strong>g'alaba sizniki! 🏆</strong>
+                <br><br>
+
+                ⚡ <strong>Maqsad oddiy:</strong>
+                yashirin sonni toping, urinishlarni tejang va rekordingizni yangilang!
+                <br><br>
+
+                🎮 Omad! Va eng muhimi — <strong>aldanib qolmang 😉</strong>
+
+            </h3>
+
+        </div>
+        
+        <div class="update-banner">
+            <div class="update-header">
+                <span class="update-icon">✨</span>
+                <div>
+                    <span class="update-label">YANGILANISH</span>
+                    <h3>Nimalar yangilandi?</h3>
+                </div>
+            </div>
+
+            <p class="update-description">
+                Sayt yanada chiroyli, tezkor va qulay bo‘lishi uchun katta yangilanish oldi.
+            </p>
+
+            <div class="update-list">
+
+                <div class="update-item">
+                    <span class="update-number">01</span>
+                    <div>
+                        <strong>🎨 Yangi dizayn</strong>
+                        <p>
+                            Interfeys zamonaviy <b>Glassmorphism</b> uslubida qayta ishlab chiqildi.
+                            Endi sayt yanada toza va premium ko‘rinishga ega.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="update-item">
+                    <span class="update-number">02</span>
+                    <div>
+                        <strong>🐛 Buglar tozalandi</strong>
+                        <p>
+                            Oldingi versiyadagi xatolar tuzatildi va o‘yin jarayoni yanada
+                            barqaror qilindi.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="update-item">
+                    <span class="update-number">03</span>
+                    <div>
+                        <strong>⚡ Ishlash tezligi yaxshilandi</strong>
+                        <p>
+                            Sahifa va o‘yin elementlarining ishlashi optimallashtirildi.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="update-item">
+                    <span class="update-number">04</span>
+                    <div>
+                        <strong>📱 Mobil qurilmalar yaxshilandi</strong>
+                        <p>
+                            Telefon va kichik ekranlarda foydalanish qulayroq bo‘ldi.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="update-item">
+                    <span class="update-number">05</span>
+                    <div>
+                        <strong>🎮 O‘yin jarayoni yaxshilandi</strong>
+                        <p>
+                            Son taxmin qilish jarayoni yanada tushunarli va qulay qilindi.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="update-item">
+                    <span class="update-number">06</span>
+                    <div>
+                        <strong>🌗 Yangi tema tizimi</strong>
+                        <p>
+                            Light, Dark va Forest temalari bilan interfeysni o‘zingizga
+                            moslashtirishingiz mumkin.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="update-item">
+                    <span class="update-number">07</span>
+                    <div>
+                        <strong>🔊 Prank Mode yaxshilandi</strong>
+                        <p>
+                            Ovozli effektlar va prank rejimi yanada silliq ishlaydi.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="update-item">
+                    <span class="update-number">08</span>
+                    <div>
+                        <strong>✨ Interaktiv animatsiyalar</strong>
+                        <p>
+                            Tugmalar, ikonalar va interfeys elementlariga yangi
+                            animatsiyalar qo‘shildi.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="update-footer">
+                <span>🚀 Yangilangan versiya</span>
+                <span class="version">v2.0</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="card" id="start">
+        <input type="number" min="1" id="snum" placeholder="Boshlanadi..."><input type="number" min="10" id="enum" placeholder="Tugaydi...">
+        <button type="button" id="start-game">
+            Boshlash
+            <i class="fa-solid fa-play fa-jello"></i>
+        </button>
+    </section>
+
+    <section class="card" id="game">
+        <div class="foiz1">
+            <div class="foiz2" id="vfoiz2" style="width: 100%;">qoldi:<span id="qoldi"></span></div>
+        </div>
+        <h3 id="result">Inputga tahminingizni yozing.</h3>
+        <input type="number" id="usernum">
+        <button type="button" id="subber">Tekshirish</button>
+    </section>
+
+    <section class="card" id="win">
+        <h1>G'alaba!</h1>
+        <video src="videos/VID_20260810_231538_437.mp4" autoplay muted loop></video>
+        <h3 id="res"></h3>
+        <button type="button" id="restart">RESTART</button>
+    </section>
+
+    <section class="card" id="lose">
+        <h1>Mag'lub!</h1>
+        <video src="videos/game_over.mp4" class="video" autoplay muted loop></video>
+        <h3 id="res2"></h3>
+        <button type="button" id="restart2">RESTART</button>
+    </section>
+    <footer>Powered by <span>Nazarbek</span> (Senior dasturchi)</footer>
+    <script src="script.js"></script>
+</body>
+</html>
