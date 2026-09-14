@@ -52,6 +52,8 @@ let urinishBerildi = 0
 let myNum = 0
 let start = 0
 let end = 0
+let startX = 0
+let endX = 0
 
 const setTheme = () => {document.documentElement.dataset.theme = themes[currentTheme];bodyToggle.innerHTML = themeIcons[currentTheme]};setTheme()
 const checked111 = localStorage.getItem('prankmode')
@@ -259,6 +261,26 @@ document.addEventListener('click', (e) => {
     about.classList.remove('hidden')
   }
 })
+
+document.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+}) 
+
+document.addEventListener('touchmove', (e) => {
+    endX = e.touches[0].clientX;
+}) 
+
+document.addEventListener('touchend', () => {
+    const len = endX - startX
+
+    if (len > 80) {
+        settings.classList.add('hidden') 
+    }
+
+    if (len < -80) {
+        settings.classList.remove('hidden') 
+    }
+}) 
 
 difficulty.addEventListener('change', () => {
     const hards = [
