@@ -270,7 +270,8 @@ document.addEventListener('touchmove', (e) => {
     endX = e.touches[0].clientX;
 }) 
 
-document.addEventListener('touchend', () => {
+document.addEventListener('touchend', (e) => {
+    endX = e.touches[0].clientX;
     const len = endX - startX
 
     if (len > 80) {
