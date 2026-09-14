@@ -131,28 +131,526 @@ nav button {
     backdrop-filter: blur(25px);
 }
 
+nav button {
+    transition:
+        box-shadow .45s ease-in,
+        transform .3s ease;
+}
+
 nav button:hover {
-    box-shadow: inset 0 -1px 20px 0px #000;
+    box-shadow:
+        inset 0 200px 20px 0 #003c44b7,
+        0 12px 25px #003c447c;
+
+    transform: translateY(-2px);
 }
 
 
+
+/* ================================
+   PREMIUM GAME CARDS
+================================ */
 
 .card {
+    position: relative;
+
     display: flex;
-    width: 60%;
-    transition: all 0.5s;
-    height: 60%;
-    /*max-width: 1000px;
-    max-height: 1000px;*/
-    background-color: var(--body-bg);
     flex-direction: column;
-    border-radius: 3rem;
-    padding: 3rem;
-    overflow-y: auto;
+
+    width: min(700px, 92%);
+    min-height: 420px;
+
+    margin: auto;
+    padding: 2.5rem;
+
+    overflow: hidden;
+    isolation: isolate;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.72),
+            rgba(255, 255, 255, 0.42)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 2rem;
+
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
 }
 
-.card:hover {
-    box-shadow: 0 10px 25px -5px rgb(0, 225, 255);
+
+/* Yorug'lik effekti */
+.card::before {
+    content: "";
+
+    position: absolute;
+    z-index: -1;
+
+    width: 220px;
+    height: 220px;
+
+    top: -100px;
+    right: -80px;
+
+    background: rgba(0, 122, 255, 0.14);
+
+    border-radius: 50%;
+
+    filter: blur(20px);
+
+    pointer-events: none;
+}
+
+
+/* Pastki yumshoq glow */
+.card::after {
+    content: "";
+
+    position: absolute;
+    z-index: -1;
+
+    width: 180px;
+    height: 180px;
+
+    bottom: -100px;
+    left: -70px;
+
+    background: rgba(0, 225, 255, 0.10);
+
+    border-radius: 50%;
+
+    filter: blur(25px);
+
+    pointer-events: none;
+}
+
+
+/* Desktop hover */
+@media (hover: hover) {
+
+    .card:hover {
+        transform: translateY(-4px);
+
+        box-shadow:
+            0 28px 70px rgba(0, 0, 0, 0.12),
+            inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+
+}
+
+
+/* ================================
+   INPUTS
+================================ */
+
+.card input {
+    width: 100%;
+    height: 3.5rem;
+
+    padding: 0 1.2rem;
+
+    margin-bottom: 1rem;
+
+    background: rgba(255, 255, 255, 0.38);
+
+    border: 1.5px solid rgba(0, 0, 0, 0.08);
+    border-radius: 1.1rem;
+
+    outline: none;
+
+    color: var(--text-fg);
+
+    font-size: 1.15rem;
+    font-weight: 700;
+
+    text-align: center;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* Number input arrowlarini yashirish */
+.card input[type="number"]::-webkit-inner-spin-button,
+.card input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.card input[type="number"] {
+    appearance: textfield;
+}
+
+
+/* Input focus */
+
+.card input:focus {
+    background: rgba(255, 255, 255, 0.65);
+
+    border-color: #007aff;
+
+    box-shadow:
+        0 0 0 4px rgba(0, 122, 255, 0.12),
+        0 8px 25px rgba(0, 122, 255, 0.08);
+
+    transform: translateY(-2px);
+}
+
+
+/* Placeholder */
+
+.card input::placeholder {
+    color: var(--inp-pla);
+    opacity: 0.65;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    letter-spacing: 0;
+}
+
+
+/* ================================
+   BUTTON
+================================ */
+
+.card button {
+    position: relative;
+
+    width: 100%;
+    min-height: 3.5rem;
+
+    margin-top: auto;
+
+    border: none;
+    border-radius: 1.1rem;
+
+    background: var(--text-fg);
+    color: var(--body-bg);
+
+    font-size: 0.95rem;
+    font-weight: 900;
+
+    letter-spacing: 0.12rem;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+}
+
+
+/* Button shine */
+
+.card button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.35),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    transition: left 0.6s ease;
+}
+
+
+@media (hover: hover) {
+
+    .card button:hover {
+        transform: translateY(-3px);
+
+        box-shadow:
+            0 12px 30px rgba(0, 122, 255, 0.20);
+
+        filter: brightness(1.05);
+    }
+
+    .card button:hover::before {
+        left: 140%;
+    }
+
+}
+
+
+/* Bosilgandagi effekt */
+
+.card button:active {
+    transform: scale(0.97);
+}
+
+
+/* ================================
+   CARD HEADINGS
+================================ */
+
+.card h1 {
+    margin: 0 0 1rem;
+
+    color: var(--text-fg);
+
+    font-size: clamp(1.8rem, 5vw, 2.7rem);
+    font-weight: 900;
+
+    letter-spacing: -0.05em;
+
+    line-height: 1.1;
+}
+
+
+.card h3 {
+    margin: 0 0 1.5rem;
+
+    color: var(--text-fg);
+
+    font-size: 1rem;
+    line-height: 1.6;
+
+    opacity: 0.75;
+}
+
+
+/* ================================
+   START CARD
+================================ */
+
+#start {
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+
+#start::before {
+    background: rgba(0, 122, 255, 0.16);
+}
+
+
+/* ================================
+   GAME CARD
+================================ */
+
+#game {
+    justify-content: center;
+    gap: 1rem;
+}
+
+
+/* Guess input */
+
+#game #usernum {
+    height: 4.5rem;
+
+    font-size: 2rem;
+    font-family: "Courier New", monospace;
+
+    letter-spacing: 0.1rem;
+}
+
+
+/* Result text */
+
+#result {
+    min-height: 3rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.8rem 1rem;
+
+    border-radius: 1rem;
+
+    background: rgba(0, 122, 255, 0.06);
+
+    text-align: center;
+}
+
+
+/* ================================
+   PROGRESS BAR
+================================ */
+
+.foiz1 {
+    width: 100%;
+    height: 0.65rem;
+
+    margin-bottom: 1.2rem;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background: rgba(0, 0, 0, 0.08);
+}
+
+
+.foiz2 {
+    position: relative;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: linear-gradient(
+        90deg,
+        #007aff,
+        #00d4ff
+    );
+
+    box-shadow:
+        0 0 15px rgba(0, 122, 255, 0.3);
+
+    transition: width 0.4s ease;
+}
+
+
+/* ================================
+   WIN / LOSE
+================================ */
+
+#win,
+#lose {
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    gap: 1rem;
+}
+
+
+#win h1,
+#lose h1 {
+    margin-bottom: 0.2rem;
+}
+
+
+#win video,
+#lose video {
+    width: min(100%, 360px);
+    max-height: 230px;
+
+    object-fit: cover;
+
+    border-radius: 1.5rem;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+
+#win #res,
+#lose #res2 {
+    padding: 1rem 1.2rem;
+
+    width: 100%;
+
+    border-radius: 1rem;
+
+    background: rgba(0, 0, 0, 0.04);
+
+    font-weight: 700;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+    .card {
+        width: calc(100% - 1.5rem);
+
+        min-height: 400px;
+
+        padding: 1.4rem;
+
+        border-radius: 1.5rem;
+    }
+
+
+    .card h1 {
+        font-size: 2rem;
+    }
+
+
+    .card input {
+        height: 3.3rem;
+    }
+
+
+    #game #usernum {
+        height: 4rem;
+        font-size: 1.7rem;
+    }
+
+
+    #win video,
+    #lose video {
+        max-height: 190px;
+    }
+
+}
+
+
+/* Juda kichik eski telefonlar */
+
+@media (max-width: 360px) {
+
+    .card {
+        width: calc(100% - 1rem);
+
+        padding: 1rem;
+
+        border-radius: 1.2rem;
+    }
+
+
+    .card h1 {
+        font-size: 1.7rem;
+    }
+
+
+    .card h3 {
+        font-size: 0.9rem;
+    }
+
+
+    .card button {
+        min-height: 3.2rem;
+    }
+
 }
 
 .prmode span {
@@ -165,54 +663,6 @@ nav button:hover {
 
 .prmode input[type="checkbox"] {
     display: none;
-}
-
-.card input {
-    background: transparent;
-    border-radius: 1rem;
-    border: 0.2rem solid var(--text-fg);
-    height: 3rem;
-    text-align: center;
-    transition: all 0.5s;
-    color: var(--text-fg);
-    letter-spacing: 1rem;
-    margin-bottom: 1rem;
-    font-size: 2rem;
-    font-weight: 900;
-    font-style: italic;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
-}
-
-.card input:focus {
-    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5);
-}
-
-::-webkit-input-placeholder {
-    font-weight: normal;
-    font-style: italic;
-    color: var(--inp-pla);
-    text-align: left;
-}
-
-.card button {
-    background: var(--body-bg);
-    border: 0.2rem solid var(--text-fg);
-    color: var(--text-fg);
-    font-size: 1rem;
-    font-weight: 900;
-    letter-spacing: 0.2rem;
-    border-radius: 1rem;
-    height: 3rem;
-    transition: all 0.5s;
-    text-transform: uppercase;
-    width: 100%;
-}
-
-.card button:hover {
-    box-shadow: 0 5px 20px 0 rgba(0, 195, 255, 0.5);
-    background-color: var(--text-fg);
-    color: var(--body-bg);
 }
 
 /* Chrome, Safari, Edge */
@@ -375,7 +825,7 @@ footer span {
     transition: all 0.5s;
 }
 
-#game, #win, #lose {
+#game, #win, #lose, #start {
     display: none;
 }
 
@@ -405,6 +855,209 @@ video {
 #music {
     width: 100%;
     transition: all 0.5s;
+}
+
+#landing {
+    width: min(700px, 92%);
+    padding: 2rem;
+    gap: 1.5rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, .72),
+            rgba(255, 255, 255, .35)
+        );
+
+    border: 1px solid rgba(255, 255, 255, .65);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, .08);
+
+    border-radius: 2rem;
+}
+
+
+/* HEADER */
+
+.landing-head {
+    width: 100%;
+    text-align: center;
+}
+
+.landing-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+
+    padding: .45rem .8rem;
+
+    border-radius: 999px;
+
+    font-size: .7rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+
+    background: rgba(0, 122, 255, .1);
+    color: #007aff;
+}
+
+.landing-head h1 {
+    margin: .8rem 0 .3rem;
+
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+
+    letter-spacing: -.05em;
+}
+
+.landing-head p {
+    margin: 0;
+
+    color: #777;
+    font-size: .95rem;
+}
+
+
+/* STATS */
+
+.stats {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .8rem;
+}
+
+.stat {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 130px;
+
+    padding: 1rem;
+
+    border-radius: 1.4rem;
+
+    background: rgba(255, 255, 255, .45);
+    border: 1px solid rgba(255, 255, 255, .6);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
+}
+
+.stat:hover {
+    transform: translateY(-6px);
+
+    background: rgba(255, 255, 255, .7);
+
+    box-shadow:
+        0 12px 30px rgba(0, 122, 255, .12);
+}
+
+
+/* ICON */
+
+.stat-icon {
+    width: 40px;
+    height: 40px;
+
+    display: grid;
+    place-items: center;
+
+    margin-bottom: .5rem;
+
+    border-radius: 12px;
+
+    background: rgba(0, 122, 255, .1);
+    color: #007aff;
+
+    font-size: 1rem;
+}
+
+
+/* NUMBER */
+
+.stat-info {
+    text-align: center;
+}
+
+.stat-info span {
+    display: block;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 1.7rem;
+    font-weight: 900;
+
+    line-height: 1;
+}
+
+.stat-info p {
+    margin: .35rem 0 0;
+
+    font-size: .7rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: .08em;
+
+    color: #888;
+}
+
+
+/* START */
+
+#landing-start {
+    width: 100%;
+
+    padding: 1rem 1.4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .7rem;
+
+    border: none;
+    border-radius: 1.2rem;
+
+    background: #007aff;
+    color: white;
+
+    font-size: 1rem;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(0, 122, 255, .25);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+#landing-start:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 122, 255, .3);
+}
+
+#landing-start:active {
+    transform: scale(.97);
 }
 
 @keyframes progress-strippes {
@@ -787,13 +1440,46 @@ about-banner {
     font-weight: 700;
 }
 
+@media (max-width: 500px) {
+
+    #landing {
+        padding: 1.3rem;
+        border-radius: 1.5rem;
+    }
+
+    .stats {
+        gap: .5rem;
+    }
+
+    .stat {
+        min-height: 110px;
+        padding: .7rem;
+        border-radius: 1.1rem;
+    }
+
+    .stat-icon {
+        width: 34px;
+        height: 34px;
+        margin-bottom: .4rem;
+    }
+
+    .stat-info span {
+        font-size: 1.4rem;
+    }
+
+    .stat-info p {
+        font-size: .6rem;
+    }
+}
+
 @media only screen and (max-width: 900px) {
     .card {
         position: fixed;
-        bottom: 0rem;
+        bottom: 5rem;
         border-radius: 3rem 3rem 0rem 0rem;
         width: 100%;
-        height: 85%;
+        height: 75%;
+        z-index: 2;
     }
 
     ::-webkit-input-placeholder {
@@ -803,10 +1489,10 @@ about-banner {
     }
 
     header {
-        z-index: 0;
+        z-index: 3;
     }
     #header-trigger {
-        z-index: 1;
+        z-index: 4;
     }
 
     .settings, .about {
@@ -814,7 +1500,7 @@ about-banner {
     }
 
     footer {
-        height: 10%;
+        height: 5rem;
     }
     #header-trigger:hover + header, header:hover {
         top: 0.1rem;
