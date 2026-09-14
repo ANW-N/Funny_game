@@ -31,6 +31,14 @@ const headerTrigger = document.getElementById('header-trigger')
 const header = document.querySelector('header')
 const difficulty = document.getElementById('difficulty')
 const difficultyText = document.getElementById('difficultyText')
+const landingStart = document.getElementById('landing-start')
+const landing = document.getElementById('landing')
+const games = document.getElementById('games')
+const wins = document.getElementById('wins')
+const best = document.getElementById('best')
+const stats = JSON.parse(localStorage.getItem('stats')) || {wins: 0, best: 0, games:0}
+const update = () => {games.innerText = stats.games; best.innerText = stats.best; wins.innerText = stats.wins}
+update()
 const themes = [
     'light', 'dark', 'forest'
 ]
@@ -56,7 +64,7 @@ let startX = 0
 let endX = 0
 
 const setTheme = () => {document.documentElement.dataset.theme = themes[currentTheme];bodyToggle.innerHTML = themeIcons[currentTheme]};setTheme()
-const checked111 = localStorage.getItem('prankmode')
+const checked111 = localStorage.getItem('prankmode') || true
 const restarter = () => {
     display_change('flex', 'none', 'none', 'none')
 
@@ -78,8 +86,12 @@ const winning = () => {
         terrorwin.currentTime = 0
         terrorwin.play()
     }
+
+    stats.wins++
+    stats.best = Math.max(stats.best, (urinishQoldi))
+    localStorage.setItem('stats', JSON.stringify(stats))
         
-    resultate.innerText = `Barakalla siz yutdingiz. Son:${myNum}, urinnish:${urinish}`
+    resultate.innerText = `Barakalla siz yutdingiz. 🔢Son: ${myNum}, urinnish: ${urinish}`
     display_change('none','none','flex', 'none')
 }
 
@@ -100,7 +112,7 @@ function enterFullscreen() {
     }
 }
 
-prankmode.checked = checked111 === 'true'
+prankmode.checked = new Boolean(checked111)
 difficulty.value = currentdifficulty
 bell.innerHTML = prankmode.checked ? bells[0] : bells[1]
 
@@ -162,6 +174,9 @@ startbtn.addEventListener('click', function() {
     qolgan.innerText = urinishQoldi
     display_change('none','flex','none', 'none')
     visualFoiz2.style.width = `100%`
+
+    stats.games++
+    localStorage.setItem('stats', JSON.stringify(stats))
 })
 
 subber.addEventListener('click', function() {
@@ -211,7 +226,7 @@ subber.addEventListener('click', function() {
         display_change('none','none','none','flex')
         lose.currentTime = 0
         lose.play()
-        result222.innerText = `Barakalla ammo siz yutqazdingiz. Son:${myNum}`
+        result222.innerText = `Barakalla ammo siz yutqazdingiz. 🔢Son: ${myNum}`
         return
     }
 })
@@ -264,24 +279,17 @@ document.addEventListener('click', (e) => {
 
 document.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
-}) 
-
-document.addEventListener('touchmove', (e) => {
-    endX = e.touches[0].clientX;
-}) 
-
+})
 document.addEventListener('touchend', (e) => {
     endX = e.touches[0].clientX;
-    const len = endX - startX
 
-    if (len > 80) {
-        settings.classList.add('hidden') 
+    if ((endX - startX) > 80) {
+        settings.classList.add('hidden')
     }
-
-    if (len < -80) {
-        settings.classList.remove('hidden') 
+    if ((endX - startX) < -80) {
+        settings.classList.remove('hidden')
     }
-}) 
+})
 
 difficulty.addEventListener('change', () => {
     const hards = [
@@ -290,3 +298,5 @@ difficulty.addEventListener('change', () => {
     difficultyText.innerText = hards[difficulty.value-1]
     localStorage.setItem('difficulty', difficulty.value)
 })
+
+landingStart.addEventListener('click', () => {display_change('flex','none','none','none');landing.style.display = 'none'})
