@@ -37,10 +37,21 @@ const games = document.getElementById('games')
 const wins = document.getElementById('wins')
 const best = document.getElementById('best')
 const stats = JSON.parse(localStorage.getItem('stats')) || {wins: 0, best: 0, games:0}
+const home = document.getElementById('home')
 const update = () => {games.innerText = stats.games; best.innerText = stats.best; wins.innerText = stats.wins}
 update()
+const difficultyIcons = document.getElementById('difficulty-icons')
+const bgm = document.getElementById("bgm");
+let bgmEnabled = localStorage.getItem('bgm') || 'true'
+const bgmIcon = document.getElementById('sound')
 const themes = [
     'light', 'dark', 'forest'
+]
+const hards = [
+    'Oson', 'Normal', 'Qiyin'
+]
+const hardClasses = [
+    'easy', 'norm', 'hard'
 ]
 const themeIcons = [
     `<i class="fa-solid fa-sun fa-spin"></i>`,
@@ -50,6 +61,30 @@ const themeIcons = [
 const bells = [
     `<i class="fa-solid fa-bell"></i>`,
     `<i class="fa-solid fa-bell-slash"></i>`
+]
+
+const volumes = [
+    `<i class="fa-solid fa-volume-high"></i>`,
+    `<i class="fa-solid fa-volume-xmark"></i>`
+]
+const iconsHardLevel = [
+    `<i class="fa-solid fa-face-smile"></i>`,
+    `<i class="fa-solid fa-face-grimace"></i>`,
+    `<i class="fa-solid fa-skull"></i>`
+]
+const shadows = [
+    `inset 0 12px 20px #0f0`,
+    `inset 0 12px 20px #fb0`,
+    `inset 0 12px 20px #f00`
+]
+const volumeChange = () => {
+    if (bgmEnabled === 'true') {bgmIcon.innerHTML = volumes[0]}
+    else {bgmIcon.innerHTML = volumes[1]}
+}; volumeChange()
+const colors = [
+    "#0f0",
+    "#fb0",
+    "#f00"
 ]
 
 let currentTheme = Number(localStorage.getItem('theme')) || 0
@@ -64,7 +99,7 @@ let startX = 0
 let endX = 0
 
 const setTheme = () => {document.documentElement.dataset.theme = themes[currentTheme];bodyToggle.innerHTML = themeIcons[currentTheme]};setTheme()
-const checked111 = localStorage.getItem('prankmode') || true
+const checked111 = localStorage.getItem('prankmode') || 'true'
 const restarter = () => {
     display_change('flex', 'none', 'none', 'none')
 
@@ -76,6 +111,9 @@ const restarter = () => {
     usernum.value = ''
     qolgan.innerText = ''
     visualFoiz2.style.width = '0%'
+
+    lose.pause()
+    lose.currentTime = 0
 
     resultDisplay.innerText = 'Inputga tahminingizni yozing.'
 }
@@ -90,6 +128,7 @@ const winning = () => {
     stats.wins++
     stats.best = Math.max(stats.best, (urinishQoldi))
     localStorage.setItem('stats', JSON.stringify(stats))
+    update()
         
     resultate.innerText = `Barakalla siz yutdingiz. 🔢Son: ${myNum}, urinnish: ${urinish}`
     display_change('none','none','flex', 'none')
@@ -101,7 +140,17 @@ function display_change(q, w, e, r) {
     win_card.style.display = e
     lose_card.style.display = r
 }
-
+function render() { 
+    difficultyIcons.style.boxShadow = shadows[currentdifficulty-1]
+    prankmode.checked = checked111 === 'true'? true:false
+    difficulty.value = currentdifficulty
+    difficultyIcons.innerHTML = iconsHardLevel[currentdifficulty-1]
+    difficultyText.innerText = hards[currentdifficulty-1]
+    difficultyText.classList.add(hardClasses[currentdifficulty-1])
+    bell.innerHTML = prankmode.checked ? bells[0] : bells[1]
+    difficulty.style.setProperty("--difficulty-color", colors[currentdifficulty-1]);
+}
+render()
 function getRandomInt(k, l) {
     return Math.floor(Math.random() * (l - k + 1)) + k;
 }
@@ -111,10 +160,6 @@ function enterFullscreen() {
         document.documentElement.requestFullscreen?.().catch(() => {});
     }
 }
-
-prankmode.checked = new Boolean(checked111)
-difficulty.value = currentdifficulty
-bell.innerHTML = prankmode.checked ? bells[0] : bells[1]
 
 //events
 bodyToggle.addEventListener('click', () => {
@@ -177,6 +222,7 @@ startbtn.addEventListener('click', function() {
 
     stats.games++
     localStorage.setItem('stats', JSON.stringify(stats))
+    update()
 })
 
 subber.addEventListener('click', function() {
@@ -281,8 +327,6 @@ document.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
 })
 document.addEventListener('touchend', (e) => {
-    endX = e.touches[0].clientX;
-
     if ((endX - startX) > 80) {
         settings.classList.add('hidden')
     }
@@ -290,13 +334,40 @@ document.addEventListener('touchend', (e) => {
         settings.classList.remove('hidden')
     }
 })
-
-difficulty.addEventListener('change', () => {
-    const hards = [
-        'Oson', 'Normal', 'Qiyin'
-    ]
-    difficultyText.innerText = hards[difficulty.value-1]
-    localStorage.setItem('difficulty', difficulty.value)
+document.addEventListener('touchmove', (e) => {
+    endX = e.touches[0].clientX;
 })
 
-landingStart.addEventListener('click', () => {display_change('flex','none','none','none');landing.style.display = 'none'})
+landingStart.addEventListener('click', () => {display_change('flex','none','none','none');landing.style.display = 'none';
+    if (bgmEnabled === 'true') {
+        bgm.volume = 0.25;
+        bgm.play();
+    }
+})
+home.addEventListener('click', () => {
+    display_change('none','none','none','none');landing.style.display = 'flex'
+})
+
+bgmIcon.addEventListener('click', () => {
+    bgmEnabled = bgmEnabled === 'true' ? 'false' : 'true'
+    localStorage.setItem('bgm', bgmEnabled)
+    volumeChange()
+    if (bgmEnabled === 'false') {
+        bgm.pause()
+        bgm.currentTime = 0
+    } else {bgm.play()}
+})
+function updateDifficulty() {}
+difficulty.addEventListener("input", () => {
+    const value = Number(difficulty.value);
+
+    difficultyText.classList.remove(hardClasses[currentdifficulty-1])
+    difficultyText.classList.add(hardClasses[value-1])
+    difficultyIcons.innerHTML = iconsHardLevel[value-1]
+    difficultyIcons.style.boxShadow = shadows[value-1]
+    difficultyText.innerText = hards[value-1]
+    localStorage.setItem('difficulty', value)
+    currentdifficulty = value
+
+    difficulty.style.setProperty("--difficulty-color", colors[currentdifficulty-1]);
+});
