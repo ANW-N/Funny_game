@@ -110,42 +110,47 @@ nav {
     display: flex;
     flex-direction: row;
     gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
     z-index: 10;
     transition: all 0.5s;
 }
 
 nav button {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0rem;
     border-radius: 50%;
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
     color: var(--text-fg);
     font-size: 3rem;
-    font-weight: 900;
     border: none;
     transition: all 0.5s;
     background: transparent;
     backdrop-filter: blur(25px);
-}
-
-nav button {
     transition:
-        box-shadow .45s ease-in,
+        all cubic-bezier(0.075, 0.82, 0.165, 1),
+        background .45s ease-in,
         transform .3s ease;
 }
 
 nav button:hover {
-    box-shadow:
-        inset 0 200px 20px 0 #003c44b7,
-        0 12px 25px #003c447c;
+    background: #000;
 
     transform: translateY(-2px);
 }
 
+nav button:active {
+    transform: scale(0.9);
+}
 
+nav h1 {
+    letter-spacing: 3px;
+    transition: 0.3s;
+}
 
 /* ================================
    PREMIUM GAME CARDS
@@ -653,6 +658,12 @@ nav button:hover {
 
 }
 
+.prmode {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .prmode span {
     font-size: 2rem;
     transition: all 0.5s;
@@ -718,7 +729,7 @@ footer span {
     text-align: center;
     transition: all 0.5s;
     width: min(40%, 1200px);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(10px);
     z-index: 10;
     font-size: 1.9rem;
     overflow-y: auto;
@@ -749,7 +760,9 @@ footer span {
 #bell {
     color: #ff0000;
 }
-
+#sound {
+    color: #1d1d1f;
+}
 .about {
     box-shadow: -10px 0 20px rgba(0, 0, 0, 0.3);
     right: -1200px;
@@ -1118,12 +1131,26 @@ button:active {
 
 .difficulty-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 
     font-size: 1rem;
+}
+
+.difficulty-header span {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrap-hard-level {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .difficulty-header strong {
@@ -1131,15 +1158,22 @@ button:active {
 
     border-radius: 999px;
 
-    background: linear-gradient(
-        135deg,
-        var(--gradient-1),
-        var(--gradient-2)
-    );
+    background: #ffbb00;
 
-    color: #1d1d1f;
+    color: #fff;
 
     font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    width: 10rem;
+}
+
+.difficulty-header strong.easy {
+    background: #0f0;
+}
+
+.difficulty-header strong.hard {
+    background: #f00;
 }
 
 #difficulty {
@@ -1178,7 +1212,8 @@ button:active {
 
     border: 3px solid var(--body-bg);
 
-    background: var(--gradient-2);
+    background: var(--difficulty-color, #ffbb00);;
+    backdrop-filter: blur(25px);
 
     box-shadow:
         0 3px 10px rgba(0, 0, 0, 0.25);
@@ -1203,7 +1238,7 @@ button:active {
     transform: scale(0.95);
 }
 
-.difficulty-labels {
+.difficulty-labels, .why {
     display: flex;
     justify-content: space-between;
 
@@ -1214,7 +1249,12 @@ button:active {
     font-size: 0.75rem;
     font-weight: 700;
 }
-
+.why span {
+    width: 100%;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-align: center;
+}
 .difficulty-labels span:nth-child(2) {
     opacity: 0.8;
 }
@@ -1243,14 +1283,16 @@ button:active {
     width: 100%;
 }
 
-.difficulty-info a {
+.difficulty-info i, .difficulty-info img {
     font-size: 2rem;
     color: #c0c0c0;
-    transition: color 0.5s;
+    transition: color 0.5s, all 0.5s;
 }
+
 .fa-telegram:hover {
     color: #229ED9;
 }
+
 .fa-square-instagram:hover {
     background: linear-gradient(
         45deg,
@@ -1334,6 +1376,30 @@ about-banner {
     font-size: 1.4rem;
 
     box-shadow: 0 8px 25px rgba(0, 122, 255, .25);
+}
+
+.difficulty-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1d1d1f;
+    border-radius: 1rem;
+    font-size: 8rem;
+    height: 10rem;
+    width: 10rem;
+}
+
+.fa-face-grimace {
+    --border: rgb(255, 255, 0);
+    color: rgb(255, 255, 0);
+}
+
+.fa-skull {
+    color: #ddd;
+}
+
+.fa-face-smile {
+    color: #00ff00;
 }
 
 .update-label {
@@ -1435,7 +1501,7 @@ about-banner {
     border-radius: .5rem;
 
     background: rgba(0, 122, 255, .12);
-    color: #4da3ff;
+    color: #684dff;
 
     font-weight: 700;
 }
@@ -1473,6 +1539,26 @@ about-banner {
 }
 
 @media only screen and (max-width: 900px) {
+    .difficulty-icons {
+        width: 7rem;
+        height: 7rem;
+        font-size: 5rem;
+    }
+    .norm {
+        width: 7rem;
+    }
+    .difficulty-header span {
+        font-size: 0.8rem;
+    }
+    nav {
+        overflow-x: auto;
+        font-size: 0.7rem;
+    }
+    nav button {
+        width: 1.4rem;
+        height: 1.4rem;
+        font-size: 1.2rem;
+    }
     .card {
         position: fixed;
         bottom: 5rem;
