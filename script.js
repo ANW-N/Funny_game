@@ -246,6 +246,7 @@ subber.addEventListener('click', function() {
             faa.currentTime = 0
             faa.play()
         }
+        navigator.vibrate(200);
 
         resultDisplay.innerText = `Men o'ylagan son ${usersnum} dan kattaroq.`
     } else if (usersnum > myNum) {
@@ -253,6 +254,7 @@ subber.addEventListener('click', function() {
             faa.currentTime = 0
             faa.play()
         }
+        navigator.vibrate(200);
 
         resultDisplay.innerText = `Men o'ylagan son ${usersnum} dan kichikroq.`
     } else {
